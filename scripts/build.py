@@ -86,7 +86,12 @@ def passes(src, e):
 
 
 def region_of(src, e):
-    return "TW" if any(k.lower() in e["name"].lower() for k in src.get("twNames", [])) else src["region"]
+    n = e["name"].lower()
+    if any(k.lower() in n for k in src.get("twNames", [])):
+        return "TW"
+    if any(k.lower() in n for k in src.get("cnNames", [])):
+        return "CN"
+    return src["region"]
 
 
 def write_m3u(path, entries):
