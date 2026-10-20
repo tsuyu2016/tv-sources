@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "CN",
+      "region": "CN",
+      "primary": true,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN.m3u"
+    },
+    {
+      "id": "TW",
+      "region": "TW",
+      "primary": true,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/TW.m3u"
+    },
+    {
+      "id": "HK",
+      "region": "HK",
+      "primary": true,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK.m3u"
+    },
+    {
+      "id": "CN-vbskycn",
+      "region": "CN",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-vbskycn.m3u"
+    },
+    {
+      "id": "HK-suxuang",
+      "region": "HK",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK-suxuang.m3u"
+    },
+    {
+      "id": "HK-suxuang-TW",
+      "region": "TW",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK-suxuang-TW.m3u"
+    },
+    {
+      "id": "CN-hujingguang",
+      "region": "CN",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-hujingguang.m3u"
+    }
+  ]
+}
