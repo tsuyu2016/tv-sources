@@ -26,6 +26,18 @@
       "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-vbskycn.m3u"
     },
     {
+      "id": "CN-vbskycn-TW",
+      "region": "TW",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-vbskycn-TW.m3u"
+    },
+    {
+      "id": "HK-suxuang-CN",
+      "region": "CN",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK-suxuang-CN.m3u"
+    },
+    {
       "id": "HK-suxuang",
       "region": "HK",
       "primary": false,
