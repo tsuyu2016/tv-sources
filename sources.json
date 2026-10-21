@@ -54,6 +54,12 @@
       "region": "CN",
       "primary": false,
       "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-hujingguang.m3u"
+    },
+    {
+      "id": "CN-bestfan",
+      "region": "CN",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-bestfan.m3u"
     }
   ]
 }
