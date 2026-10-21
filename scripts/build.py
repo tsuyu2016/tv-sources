@@ -11,12 +11,14 @@ import os
 import re
 import sys
 import urllib.parse
+import time
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "Mozilla/5.0 (Linux; Android 11; TV) AppleWebKit/537.36 Chrome/120 Safari/537.36"
 TIMEOUT = 6
 MIN_ALIVE_RATIO = 0.03
+GRACE_HOURS = 72  # 探测失败的线路，在最近一次测通后的这段时间内仍保留（避免机房网络抖动/地域差异误杀）
 
 
 def http(url, limit, rng=None):
@@ -101,7 +103,16 @@ def write_m3u(path, entries):
             f.write(e["extinf"] + "\n" + e["url"] + "\n")
 
 
+def load_state():
+    try:
+        return json.load(open(os.path.join(ROOT, "state.json"), encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def main():
+    now = int(time.time())
+    state = load_state()  # url -> 最近一次测通的 unix 时间
     cfg = json.load(open(os.path.join(ROOT, "candidates.json"), encoding="utf-8"))
     live = os.path.join(ROOT, "live")
     os.makedirs(live, exist_ok=True)
@@ -121,14 +132,20 @@ def main():
                 uniq.append(e)
         with cf.ThreadPoolExecutor(max_workers=64) as ex:
             ok = list(ex.map(lambda e: alive(e["url"]), uniq))
+        for e, k in zip(uniq, ok):
+            if k:
+                state[e["url"]] = now
         good = [e for e, k in zip(uniq, ok) if k]
         ratio = len(good) / len(uniq) if uniq else 0
+        # 宽限：近期测通过的线路保留（只在源本身健康时生效）
+        kept = [e for e, k in zip(uniq, ok) if not k and now - state.get(e["url"], 0) <= GRACE_HOURS * 3600]
+        good += kept
         # 按地区拆分输出（twNames 会把部分条目归到 TW）
         by_region = {}
         for e in good:
             by_region.setdefault(region_of(src, e), []).append(e)
         healthy = uniq and ratio >= MIN_ALIVE_RATIO
-        report.append(f"{src['id']}: candidates={len(uniq)} alive={len(good)} ({100*ratio:.0f}%){'' if healthy else '  UNHEALTHY -> keep previous'}")
+        report.append(f"{src['id']}: candidates={len(uniq)} alive={len(good) - len(kept)} grace={len(kept)} ({100*ratio:.0f}%){'' if healthy else '  UNHEALTHY -> keep previous'}")
         regions = set(by_region) | {src["region"]}
         for r in sorted(regions):
             fid = src["id"] if r == src["region"] else f"{src['id']}-{r}"
@@ -140,6 +157,10 @@ def main():
                     "id": fid, "region": r, "primary": bool(src.get("primary")),
                     "url": cfg["raw_base"] + urllib.parse.quote(fid) + ".m3u",
                 })
+    state = {u: t for u, t in state.items() if now - t <= 14 * 86400}
+    with open(os.path.join(ROOT, "state.json"), "w", encoding="utf-8") as f:
+        json.dump(state, f, sort_keys=True)
+        f.write("\n")
     out = {"version": 1, "sources": published}
     with open(os.path.join(ROOT, "sources.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
