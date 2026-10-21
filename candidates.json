@@ -99,6 +99,12 @@
         "更新",
         "测试"
       ]
+    },
+    {
+      "id": "CN-bestfan",
+      "region": "CN",
+      "primary": false,
+      "url": "https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_cctv.m3u8"
     }
   ]
 }
