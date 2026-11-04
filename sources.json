@@ -18,42 +18,6 @@
       "region": "HK",
       "primary": true,
       "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK.m3u"
-    },
-    {
-      "id": "CN-vbskycn",
-      "region": "CN",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-vbskycn.m3u"
-    },
-    {
-      "id": "CN-vbskycn-TW",
-      "region": "TW",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-vbskycn-TW.m3u"
-    },
-    {
-      "id": "HK-suxuang",
-      "region": "HK",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK-suxuang.m3u"
-    },
-    {
-      "id": "HK-suxuang-TW",
-      "region": "TW",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/HK-suxuang-TW.m3u"
-    },
-    {
-      "id": "CN-hujingguang",
-      "region": "CN",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-hujingguang.m3u"
-    },
-    {
-      "id": "CN-bestfan",
-      "region": "CN",
-      "primary": false,
-      "url": "https://raw.githubusercontent.com/tsuyu2016/tv-sources/main/live/CN-bestfan.m3u"
     }
   ]
 }
