@@ -1,7 +1,7 @@
 {
-  "versionCode": 8,
-  "versionName": "0.8.0",
-  "url": "https://github.com/tsuyu2016/tv-sources/releases/download/v8/tv-app.apk",
-  "sha256": "2c2c04b6f9432ca156c14ed808f3b4ffd9deb18e42de4f125ce95cf9e0c666ef",
-  "notes": "新增：自定义订阅与电脑端配置页、更新频道、显示全部频道、检查更新；去掉点播；内置源只保留公开源。"
+  "versionCode": 9,
+  "versionName": "0.9.0",
+  "url": "https://github.com/tsuyu2016/tv-sources/releases/download/v9/tv-app.apk",
+  "sha256": "2199e69da1c7532b95c9eb8f1dd786793294a29e36529388d2b47b7ed104395f",
+  "notes": "设置页支持 iptv-org 全库搜索并加入自定义分组；更新频道/显示全部频道"
 }
